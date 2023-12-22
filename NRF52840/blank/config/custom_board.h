@@ -54,7 +54,7 @@
 
 #define ADS1258_IRQPRIORITY     2
 #define ADS1258_START_IRQPRIORITY 0
-#define A5133_IRQPRIORITY       5
+#define A5133_IRQPRIORITY       0
 #define IIC_IRQPRIORITY         6
 
 #endif

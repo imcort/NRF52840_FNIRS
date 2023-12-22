@@ -12,6 +12,7 @@
 
 #include "transfer_handler.h"
 #include "ads1258.h"
+#include "a5133.h"
 
 void uart_event_handle(app_uart_evt_t * p_event)
 {
@@ -30,20 +31,26 @@ void uart_event_handle(app_uart_evt_t * p_event)
     }
 }
 
+void a5133_receive_evt_handler(uint8_t* payload, uint8_t len)
+{
+
+}
+
 int main(void)
 {
     
     APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
     NRF_LOG_DEFAULT_BACKENDS_INIT();
-
+    a5133_begin();
     ads1258_begin();
+    
     ads1258_ppi_recv_start();
 
     NRF_LOG_INFO("SPI example started.");
 
     while (1)
     {
-        
+        a5133_process(); 
         NRF_LOG_FLUSH();
         __WFE();
         
